@@ -41,11 +41,6 @@ public class Watch {
             Document doc = event.getFullDocument();
             collection1.insertOne(doc);
 
-            /*
-            if (++numberOfEvents[0] >= 2) {
-                  System.exit(0);
-            }
-            */
             });
             
         }
