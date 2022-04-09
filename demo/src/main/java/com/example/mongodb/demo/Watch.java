@@ -1,4 +1,4 @@
-package com.example.mongodb;
+package com.example.mongodb.demo;
 
 import org.bson.Document;
 import org.bson.conversions.Bson;
@@ -33,16 +33,12 @@ public class Watch {
                                 Arrays.asList("insert", "update"))));
             ChangeStreamIterable<Document> changeStream = collection.watch(pipeline)
                 .fullDocument(FullDocument.UPDATE_LOOKUP);
-            // variables referenced in a lambda must be final; final array gives us a mutable integer
-            //final int[] numberOfEvents = {0};
             changeStream.forEach(event -> {
-            
             //System.out.println("Received a change to the collection: " + event);
             Document doc = event.getFullDocument();
             collection1.insertOne(doc);
-
             });
-            
+            //每秒數百筆寫入
         }
     }
 }
