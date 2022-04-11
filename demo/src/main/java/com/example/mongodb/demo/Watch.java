@@ -34,11 +34,11 @@ public class Watch {
             ChangeStreamIterable<Document> changeStream = collection.watch(pipeline)
                 .fullDocument(FullDocument.UPDATE_LOOKUP);
             changeStream.forEach(event -> {
-            //System.out.println("Received a change to the collection: " + event);
+            
             Document doc = event.getFullDocument();
             collection1.insertOne(doc);
             });
-            //每秒數百筆寫入
+            
         }
     }
 }
